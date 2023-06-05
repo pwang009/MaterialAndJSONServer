@@ -1,0 +1,4 @@
+version: '3.4'
+services:
+  json-server:
+    user: 1000:1000

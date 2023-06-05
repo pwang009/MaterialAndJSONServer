@@ -1,0 +1,141 @@
+<div class="logo text-center">
+  <!-- <img src="https://cdn.shopify.com/s/files/1/2130/8753/t/2/assets/lotusgrayredlogo.svg",
+         alt=""> -->
+</div>
+
+<div class="registation-form m-3 p-4">
+  <form [formGroup] = "registerForm">
+    <div class="row">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input formControlName="firstName"  matInput placeholder="First Name" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input formControlName="lastName" matInput placeholder="Last Name" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput placeholder="Email" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          <!-- <mat-hint>Hint</mat-hint> -->
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Mobile</mat-label>
+          <input formControlName="mobile" matInput placeholder="Mobile" />
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Weight</mat-label>
+          <input type="number" formControlName="weight"  matInput placeholder="Weight" />
+          <mat-icon matSuffix>line_weight</mat-icon>
+          <mat-hint>Unit is KGs</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Height</mat-label>
+          <input [readonly]="!this.registerForm.value?.weight" type="number" formControlName="height"  matInput placeholder="Height" />
+          <mat-icon matSuffix><i class="fa fa-text-height" aria-hidden="true"></i></mat-icon>
+          <mat-hint>Unit is feet</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>BMI</mat-label>
+          <input readonly type="number" formControlName="bmi"  matInput placeholder="BMI" />
+          <mat-icon matSuffix><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i></mat-icon>
+          <mat-hint>Unit is feet</mat-hint>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline">
+          <mat-label>BMI Result</mat-label>
+          <input readonly type="number" formControlName="bmiResult"  matInput placeholder="BMI Result" />
+          <mat-icon matSuffix><i class="fa fa-check" aria-hidden="true"></i></mat-icon>
+          <mat-hint>Unit is feet</mat-hint>
+        </mat-form-field>
+      </div>
+      <!-- Important -->
+      <div class="col-md-6 mt-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Important to you</mat-label>
+          <mat-select  multiple="true" formControlName="importantList">
+            <mat-option *ngFor="let list of importantList" [value]="list">{{list}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- package -->
+      <div class="col-md-6 mt-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Select package</mat-label>
+          <mat-select formControlName="package">
+            <mat-option *ngFor="let package of packages" [value]="package">{{package}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <!-- gender -->
+      <div class="col-md-6">
+        <label id="example-radio-group-label">Gender</label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          formControlName="gender" >
+          <mat-radio-button class="example-radio-button" *ngFor="let gender of genders" [value]="gender">
+            {{gender}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div>Selected gender is: </div>
+      </div>
+      <!-- trainer -->
+      <div class="col-md-6">
+        <label id="example-radio-group-label">Request Trainer?</label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          formControlName="requestTrainer">
+          <mat-radio-button class="example-radio-button" *ngFor="let trainerOpt of ['Yes', 'No']" [value]="trainerOpt">
+            {{trainerOpt}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div>Selected option is: </div>
+      </div>
+      <!-- been to Gym -->
+      <div class="col-md-6 mt-4">
+        <label id="example-radio-group-label">Been to Gym before?</label>
+        <mat-radio-group
+          aria-labelledby="example-radio-group-label"
+          class="example-radio-group"
+          formControlName="beenGym">
+          <mat-radio-button class="example-radio-button" *ngFor="let beenGym of YesOrNo" [value]="beenGym">
+            {{beenGym}}
+          </mat-radio-button>
+        </mat-radio-group>
+        <div>Selected option is: </div>
+      </div>
+      <!-- Date -->
+      <div class="col-md-6 mt-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input formControlName="enquiryDate" matInput [matDatepicker]="enquiryDate">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="enquiryDate"></mat-datepicker-toggle>
+          <mat-datepicker #enquiryDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <button (click)="submit()" class="mt-4" mat-raised-button color="accent">Submit</button>
+  </form>
+</div>

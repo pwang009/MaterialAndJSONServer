@@ -1,5 +1,5 @@
 <div class="mt-4">
-  <mat-card class="example-card">
+  <mat-card *ngIf="userDetails" class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{userDetails.lastName}}</mat-card-title>

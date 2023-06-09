@@ -15,7 +15,7 @@ export class ApiService {
     return this.http.post<User>(this.baseUrl, registerObj);
   }
 
-  getUer() {
+  getUsers() {
     return this.http.get<User[]>(this.baseUrl);
   }
 

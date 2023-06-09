@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validator, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
+import { User } from 'src/app/models/user/user.module';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -16,8 +18,11 @@ export class CreateRegistrationComponent implements OnInit {
   YesOrNo = ["Yes", "No"];
 
   registerForm!: FormGroup;
+  userId!: number;
+  isUpdateActive: boolean = false;
 
-  constructor(private fb: FormBuilder, private api: ApiService, private toastr: NgToastService) { }
+  constructor(private fb: FormBuilder, private activatedRoute: ActivatedRoute, private router: Router,
+    private api: ApiService, private toastr: NgToastService) { }
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -51,6 +56,34 @@ export class CreateRegistrationComponent implements OnInit {
 
     this.registerForm.controls['height'].valueChanges.subscribe(res => {
       this.calBmi(res);
+    });
+
+    this.activatedRoute.params.subscribe(val => {
+      this.userId = val['id'];
+      this.api.getUserById(this.userId).subscribe(res => {
+        this.isUpdateActive = true;
+        this.fillFormToUpdate(res);
+      })
+    })
+
+
+  }
+  fillFormToUpdate(user: User) {
+    this.registerForm.setValue({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      mobile: user.mobile,
+      weight: user.weight,
+      height: user.height,
+      bmi: user.bmi,
+      bmiResult: user.bmiResult,
+      importantList: user.importantList,
+      package: user.package,
+      gender: user.gender,
+      requestTrainer: user.requestTrainer,
+      beenGym: user.beenGym,
+      enquiryDate: user.enquiryDate
     })
   }
 
@@ -81,5 +114,14 @@ export class CreateRegistrationComponent implements OnInit {
         this.registerForm.controls['bmiResult'].patchValue("obese");
         break;
     }
+  }
+
+  update(){
+    this.api.updateUser(this.registerForm.value, this.userId)
+    .subscribe(res => {
+      this.toastr.success({detail: "success", summary: "user created", duration: 3000});
+      this.registerForm.reset();
+      this.router.navigate(['list']);
+    });
   }
 }

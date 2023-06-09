@@ -1,0 +1,82 @@
+{
+  "enquiry": [
+    {
+      "firstName": "Vivian",
+      "lastName": "You",
+      "email": "pwang009@yahoo.com",
+      "mobile": "9494395275",
+      "weight": 70,
+      "height": 1.5,
+      "bmi": 31.11111111111111,
+      "bmiResult": "obese",
+      "importantList": [
+        "Fat reduction"
+      ],
+      "package": "Monthly",
+      "gender": "Male",
+      "requestTrainer": "No",
+      "beenGym": "Yes",
+      "enquiryDate": "2023-06-06T07:00:00.000Z",
+      "id": 2
+    },
+    {
+      "firstName": "Peng",
+      "lastName": "Wang",
+      "email": "pwang009@yahoo.com",
+      "mobile": "9494395275",
+      "weight": 74,
+      "height": 15,
+      "bmi": 0.3288888888888889,
+      "bmiResult": "underweight",
+      "importantList": [
+        "Fat reduction"
+      ],
+      "package": "Quarterly",
+      "gender": "Female",
+      "requestTrainer": "No",
+      "beenGym": "Yes",
+      "enquiryDate": "2023-06-06T07:00:00.000Z",
+      "id": 3
+    },
+    {
+      "firstName": "tony",
+      "lastName": "Wang",
+      "email": "pwang009@yahoo.com",
+      "mobile": "9494395275",
+      "weight": 75,
+      "height": 1.7,
+      "bmi": 25.95155709342561,
+      "bmiResult": "overweight",
+      "importantList": [
+        "Muscle"
+      ],
+      "package": "Monthly",
+      "gender": "Male",
+      "requestTrainer": "No",
+      "beenGym": "Yes",
+      "enquiryDate": "2023-06-01T07:00:00.000Z",
+      "id": 4
+    },
+    {
+      "firstName": "Peng",
+      "lastName": "Wang",
+      "email": "pwang009@yahoo.com",
+      "mobile": "9494395275",
+      "weight": 75,
+      "height": 1.9,
+      "bmi": 20.775623268698062,
+      "bmiResult": "normal",
+      "importantList": [
+        "Endurance",
+        "Muscle",
+        "Digestive"
+      ],
+      "package": "Quarterly",
+      "gender": "Male",
+      "requestTrainer": "No",
+      "beenGym": "Yes",
+      "enquiryDate": "2023-06-09T07:00:00.000Z",
+      "id": 5
+    }
+  ]
+}
